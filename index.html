@@ -1,118 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700&family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sorteador de números</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript intermediário</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <body>
+    <div class="container">
+      <div class="container__conteudo">
+        <div class="container__informacoes">
+          <div class="container__texto">
+            <h1>
+              Sorteador<span class="container__texto-azul"> de números</span>
+            </h1>
 
-
-    <body>
-
-        <h1 id="d"></h1>
-        <button class="abcd" onclick="sortear()">Clique para sortear</button>
-    
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="fecharModal()">&times;</span>
-                <h2>🎉 O vencedor é você,</h2>
-                <h1 id="vencedor"></h1>
-                <h3>PARABÉNS 🎉 </h3>
+            <div class="container__campo">
+              <label class="texto__paragrafo">Quantidade de números</label>
+              <input
+                class="container__input"
+                id="quantidade"
+                type="number"
+                min="1"
+              />
             </div>
+
+            <div class="container__campo">
+              <label class="texto__paragrafo">Do número</label>
+              <input class="container__input" id="de" type="number" min="1" />
+            </div>
+
+            <div class="container__campo">
+              <label class="texto__paragrafo">Até o número</label>
+              <input class="container__input" id="ate" type="number" min="1" />
+            </div>
+          </div>
+
+          <div class="chute container__botoes">
+            <button
+              onclick="sortear()"
+              id="btn-sortear"
+              class="container__botao"
+            >
+              Sortear
+            </button>
+            <button
+              onclick="reiniciar()"
+              id="btn-reiniciar"
+              class="container__botao-desabilitado"
+            >
+              Reiniciar
+            </button>
+          </div>
+
+          <div class="container__texto" id="resultado">
+            <label class="texto__paragrafo"
+              >Números sorteados: nenhum até agora</label
+            >
+          </div>
         </div>
-    
-        <div class="participantes">
-            <h2>Participantes</h2>
-            <p id="listaParticipantes"></p>
-        </div>
-    
-        <div class="adicionar">
-            <input type="text" id="nomeParticipante" class="abc" placeholder="Digite o nome">
-            <button class="btn-adc" id="adicionar">Adicionar</button>
-        </div>
-    
-        <script>
-            let pessoas = ["Antônio", "Armando", "Jessé", "Júlio", "Matheus", "Thainan"];
-    
-            function sortear() {
-                let np = pessoas.length;
-                let ns = Math.floor(Math.random() * np);
-                let vencedor = pessoas[ns];
-    
-                document.getElementById("d").innerHTML = vencedor;
-                document.getElementById("vencedor").innerHTML = vencedor;
-                document.getElementById("modal").style.display = "block";
-            }
-    
-            function fecharModal() {
-                document.getElementById("modal").style.display = "none";
-            }
-    
-            function atualizarLista() {
-                const lista = document.getElementById("listaParticipantes");
-                lista.innerHTML = ""; // Limpa a lista antes de recriá-la
-    
-                pessoas.forEach((nome, index) => {
-                    const li = document.createElement("li");
-                    li.textContent = nome;
-                    lista.appendChild(li);
-                });
-            }
-    
-            // Atualiza a lista ao carregar a página
-            atualizarLista();
-    
-            // Evento para adicionar novos participantes
-            document.getElementById("adicionar").addEventListener("click", () => {
-                let input = document.getElementById("nomeParticipante");
-                let nome = input.value.trim();
-    
-                if (nome !== "") {
-                    pessoas.push(nome);
-                    atualizarLista(); // Atualiza a lista exibida
-                    input.value = ""; // Limpa o campo de input
-                } else {
-                    alert("Digite um nome válido!");
-                }
-            });
-    
-        </script>
-    
-    </body>
 
+        <img src="." alt="" class="" />
+      </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="script.js"></script>
-
+    <script src="app.js" defer></script>
+  </body>
 </html>
